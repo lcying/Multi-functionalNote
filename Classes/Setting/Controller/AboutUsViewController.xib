@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutUsViewController">
+            <connections>
+                <outlet property="aboutLabel" destination="ca9-Sd-7e1" id="Hnf-pw-Vei"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SBLogo" translatesAutoresizingMaskIntoConstraints="NO" id="lup-hb-YU0">
+                    <rect key="frame" x="66" y="20" width="243" height="190"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="243" id="2f6-Bs-URl"/>
+                        <constraint firstAttribute="height" constant="190" id="CyX-Gu-8kU"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkT-Cj-T5o">
+                    <rect key="frame" x="0.0" y="310" width="375" height="50"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="x1h-H2-Nex"/>
+                    </constraints>
+                    <state key="normal" title="点击拨打客服电话：18758103483">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="callPhoneAction:" destination="-1" eventType="touchUpInside" id="Xo5-dR-TmB"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="随便笔记......随便记点什么吧......" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-Sd-7e1">
+                    <rect key="frame" x="0.0" y="230" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="DL1-LF-01F"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lup-hb-YU0" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="GLb-Lw-YyO"/>
+                <constraint firstItem="kkT-Cj-T5o" firstAttribute="top" secondItem="ca9-Sd-7e1" secondAttribute="bottom" constant="20" id="GYU-Ay-PYh"/>
+                <constraint firstItem="lup-hb-YU0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="SSG-UN-iNw"/>
+                <constraint firstAttribute="trailing" secondItem="kkT-Cj-T5o" secondAttribute="trailing" id="Tnx-Al-ZhU"/>
+                <constraint firstAttribute="trailing" secondItem="ca9-Sd-7e1" secondAttribute="trailing" id="aHr-oS-7jE"/>
+                <constraint firstItem="kkT-Cj-T5o" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mDj-ui-cds"/>
+                <constraint firstItem="ca9-Sd-7e1" firstAttribute="top" secondItem="lup-hb-YU0" secondAttribute="bottom" constant="20" id="qJj-yu-2t4"/>
+                <constraint firstItem="ca9-Sd-7e1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sv6-hj-Xov"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="SBLogo" width="336" height="246"/>
+    </resources>
+</document>
