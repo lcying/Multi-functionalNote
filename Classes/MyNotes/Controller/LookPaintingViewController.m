@@ -18,6 +18,11 @@
 
 @implementation LookPaintingViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.lookView = [[LookPaintingView alloc] init];
@@ -27,11 +32,14 @@
     }];
     self.lookView.noteModel = self.noteModel;
     
-    __block __weak LookPaintingViewController *weakself = self;
+//    __block __weak LookPaintingViewController *weakself = self;
 
     [self.lookView.headView setHeadCallBack:^(id obj) {
-        //条转到编辑模式
-        WritePaintingViewController *vc = [[WritePaintingViewController alloc] init];
+        //跳转到编辑模式
+//        WritePaintingViewController *vc = [[WritePaintingViewController alloc] init];
+//        vc.noteModel = weakself.noteModel;
+//        vc.categoryObject = weakself.categoryObject;
+//        [weakself presentViewController:vc animated:YES completion:nil];
         
     }];
     self.lookView.headView.titleLabel.text = @"查看笔记";

@@ -10,7 +10,7 @@
 
 @interface WritePaintingViewController : UIViewController
 
-@property (nonatomic) NoteModel *noteModel;
+//@property (nonatomic) NoteModel *noteModel;
 @property (nonatomic) BmobObject *categoryObject;
 
 @end

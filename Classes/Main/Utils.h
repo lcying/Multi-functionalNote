@@ -12,6 +12,8 @@
 
 @interface Utils : NSObject
 
++(NSString *)parseTimeWithTimeStap:(float)timestap;
+
 +(NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString;
 
 + (CGSize)getAttributedStringSizeWithMinSize:(CGSize)minSize andAttributedString:(NSAttributedString *)attributedString;

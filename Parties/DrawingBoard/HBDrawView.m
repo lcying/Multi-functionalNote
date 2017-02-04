@@ -12,7 +12,6 @@
 
 
 @interface HBDrawView ()
-@property (nonatomic, strong) UIImageView *boardImage;
 @property (nonatomic, strong) HBDrawingBoard *drawBoard;
 @property (nonatomic, strong) HBDrawSettingBoard *settingBoard;
 @property (nonatomic, strong) ZXCustomWindow *drawWindow;

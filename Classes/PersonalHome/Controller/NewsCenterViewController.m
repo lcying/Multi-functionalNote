@@ -12,6 +12,8 @@
 #import "AttentMeViewController.h"
 #import "ZanMeViewController.h"
 #import "CommentMeViewController.h"
+#import "MessageListViewController.h"
+#import "SBNewsViewController.h"
 
 @interface NewsCenterViewController () <BmobEventDelegate>
 
@@ -38,7 +40,9 @@
         switch (row) {
             case 0:
             {//私信
-                
+                MessageListViewController *vc = [[MessageListViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:vc animated:YES];
             }
                 break;
             case 1:
@@ -64,7 +68,9 @@
                 break;
             case 4:
             {//随便笔记
-                
+                SBNewsViewController *vc = [[SBNewsViewController alloc] init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [weakself.navigationController pushViewController:vc animated:YES];
             }
                 break;
         }

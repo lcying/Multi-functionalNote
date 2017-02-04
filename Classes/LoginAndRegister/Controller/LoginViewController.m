@@ -54,7 +54,7 @@
                 weakself.loginView.loginButton.userInteractionEnabled = YES;
                 if (user) {
                     
-                    [[EaseMobManager shareManager] loginWithName:weakself.loginView.usernameTF.text andPassword:encryptPassword];
+                    [[EaseMobManager shareManager] loginWithName:[user objectForKey:@"mobilePhoneNumber"] andPassword:encryptPassword];
                     
                     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
                     [app showHomeVC];

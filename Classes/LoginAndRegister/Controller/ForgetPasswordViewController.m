@@ -49,7 +49,7 @@
             NSString *password = weakself.forgetPasswordView.passwordTF.text;
             //加密后的密码
             NSString *encryptPassword = [Utils md5String:password];
-            NSLog(@"%@",encryptPassword);
+//            NSLog(@"%@",encryptPassword);
             
         }
     }];

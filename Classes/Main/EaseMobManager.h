@@ -21,10 +21,6 @@
 
 - (void)logout;
 
-- (void)addFriendWithName:(NSString *)name;
-
-- (void)removeFriendWithName:(EMBuddy *)buddy;
-
 - (EMMessage *)sendMessageWithText:(NSString *)text andUsername:(NSString *)username;
 
 - (EMMessage *)sendMessageWithImage:(UIImage *)image andUsername:(NSString *)username;

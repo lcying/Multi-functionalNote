@@ -37,7 +37,7 @@
             make.height.mas_equalTo(64);
         }];
         _headView.titleLabel.text = @"新建笔记";
-        [_headView.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
+        [_headView.rightButton setTitle:@"" forState:UIControlStateNormal];
     }
     return _headView;
 }

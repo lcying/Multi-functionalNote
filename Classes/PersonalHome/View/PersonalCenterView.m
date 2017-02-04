@@ -19,6 +19,8 @@
 #import "MyCommentCell.h"
 #import "PaintingNoteViewController.h"
 #import "EditPersonalInfoViewController.h"
+#import "OtherPersonalHomeViewController.h"
+#import "LookPaintingViewController.h"
 
 @interface PersonalCenterView ()
 
@@ -365,7 +367,20 @@
         }
     }
     
+    if (tableView.tag == 12) {
+        //我的关注
+        
+        AttentionCell *cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.row]];
+        
+        OtherPersonalHomeViewController *vc = [[OtherPersonalHomeViewController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.currentUser = cell.toUser;
+        [[self viewController].navigationController pushViewController:vc animated:YES];
+        
+    }
+    
     if (tableView.tag == 13) {
+        //我的收藏
         NoteModel *noteModel = self.myCollectionsArray[indexPath.row];
         if (![noteModel.type isEqualToString:@"0"]) {
             //有图
@@ -448,7 +463,9 @@
         [[self viewController] presentViewController:vc animated:YES completion:nil];
     }
     if ([model.type isEqualToString:@"3"]) {
-        
+        LookPaintingViewController *vc = [[LookPaintingViewController alloc] init];
+        vc.noteModel = model;
+        [[self viewController] presentViewController:vc animated:YES completion:nil];
     }
 }
 

@@ -67,6 +67,13 @@
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"652602287#lcyzufe" apnsCertName:nil];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
+    //使用通知推送必须在appDelegate中注册一下
+    UIUserNotificationType types = UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound;
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    
+    [EaseMobManager shareManager];
+    
     return YES;
 }
 
@@ -103,28 +110,27 @@
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    UIAlertView  *alert = [[UIAlertView alloc]initWithTitle:@"接收到本地通知" message:notification.alertBody delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    UIAlertView  *alert = [[UIAlertView alloc] initWithTitle:@"收到通知" message:notification.alertBody delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
     // 查看当前的状态出于(前台: 0)/(后台: 2)/(从后台进入前台: 1)
-    NSLog(@"applicationState.rawValue: %zd", application.applicationState);
+//    NSLog(@"applicationState.rawValue: %zd", application.applicationState);
     
     // 执行响应操作
     // 如果当前App在前台,执行操作
     if (application.applicationState == UIApplicationStateActive) {
-        NSLog(@"执行前台对应的操作");
+//        NSLog(@"执行前台对应的操作");
     } else if (application.applicationState == UIApplicationStateInactive) {
         // 后台进入前台
-        NSLog(@"执行后台进入前台对应的操作");
-        NSLog(@"*****%@", notification.userInfo);
+//        NSLog(@"执行后台进入前台对应的操作");
+//        NSLog(@"*****%@", notification.userInfo);
     } else if (application.applicationState == UIApplicationStateBackground) {
         // 当前App在后台
         
-        NSLog(@"执行后台对应的操作");
+//        NSLog(@"执行后台对应的操作");
     }
     
     [AppDelegate cancelLocalNotificationWithKey:notification.alertBody];
-        
 }
 
 //监听通知操作行为的点击

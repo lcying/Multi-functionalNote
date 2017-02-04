@@ -149,9 +149,7 @@
     
     //存储到本地
     NSString *dbPath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/MyDatabase.db"];
-    
-    NSLog(@"path = %@",dbPath);
-    
+        
     FMDatabase *database = [FMDatabase databaseWithPath:dbPath];
     if ([database open]) {
         BOOL isSuccess = [database executeUpdate:@"create table if not exists Clocks (content varchar(300),time varchar(100) primary key,repeat int)"];

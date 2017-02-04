@@ -122,6 +122,9 @@
     }];
     
     self.currentComment = model.bmobObject;
+    
+    [self.commentTextView becomeFirstResponder];
+
 }
 
 #pragma mark - UITextView Delegate -------------------
@@ -226,6 +229,9 @@
 }
 
 - (void)finishButtonClickedAction:(UIButton *)button{
+    
+    [self.view endEditing:YES];
+    
     [UIView animateWithDuration:0.4 animations:^{
         self.backView.hidden = YES;
         CGRect frameTV = CGRectMake(8, screenHeight - 64, screenWidth - 16, 150);

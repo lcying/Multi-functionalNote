@@ -110,7 +110,7 @@
             }];
             
             //注册环信
-            [[EaseMobManager shareManager] registerWithName:username andPassword:password];
+            [[EaseMobManager shareManager] registerWithName:phoneNumber andPassword:password];
             
             UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"注册成功！" message:@"是否立刻登录？" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -121,7 +121,7 @@
                     }
                 }];
                 
-                [[EaseMobManager shareManager] loginWithName:username andPassword:password];
+                [[EaseMobManager shareManager] loginWithName:phoneNumber andPassword:password];
                 
             }];
             UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

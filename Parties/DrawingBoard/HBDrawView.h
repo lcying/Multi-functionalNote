@@ -24,6 +24,9 @@ typedef NS_ENUM(NSInteger, actionOpen) {
 
 @interface HBDrawView : UIView
 
+//背景图片
+@property (nonatomic, strong) UIImageView *boardImage;
+
 - (void)showSettingBoard;
 - (void)hideSettingBoard;
 

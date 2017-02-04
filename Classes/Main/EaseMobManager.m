@@ -34,7 +34,7 @@ static EaseMobManager *_manager;
 - (void)registerWithName:(NSString *)name andPassword:(NSString *)password{
     [[EaseMob sharedInstance].chatManager asyncRegisterNewAccount:name password:password withCompletion:^(NSString *username, NSString *password, EMError *error) {
         if (!error) {
-            NSLog(@"~~~~~~~~~~注册成功");
+//            NSLog(@"~~~~~~~~~~注册成功");
             //注册成功登录一下
             [self loginWithName:name andPassword:password];
         }
@@ -50,7 +50,7 @@ static EaseMobManager *_manager;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"登录成功" object:nil];
         }else{
             //如果登录失败  注册一下
-            NSLog(@"______+++++______%@",error);
+//            NSLog(@"______+++++______%@",error);
             [self registerWithName:name andPassword:password];
         }
     } onQueue:nil];
@@ -59,27 +59,9 @@ static EaseMobManager *_manager;
 - (void)logout{
     [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
         if (!error) {
-            NSLog(@"~~~~~~~~~退出成功");
+//            NSLog(@"~~~~~~~~~退出成功");
         }
     } onQueue:nil];
-}
-
-- (void)addFriendWithName:(NSString *)name{
-    EMError *error = nil;
-    BOOL isSuccess = [[EaseMob sharedInstance].chatManager addBuddy:name message:@"我想加您为好友" error:&error];
-    if (isSuccess && !error) {
-        NSLog(@"添加成功");
-    }
-}
-
-- (void)removeFriendWithName:(EMBuddy *)buddy{
-    EMError *error = nil;
-    // 删除好友
-    BOOL isSuccess = [[EaseMob sharedInstance].chatManager removeBuddy:buddy.username removeFromRemote:YES error:&error];
-    if (isSuccess && !error) {
-        NSLog(@"删除成功");
-    }
-
 }
 
 - (EMMessage *)sendMessageWithText:(NSString *)text andUsername:(NSString *)username{
@@ -93,6 +75,9 @@ static EaseMobManager *_manager;
     
     [[EaseMob sharedInstance].chatManager asyncSendMessage:message progress:self];
     return message;
+}
+
+- (void)didSendMessage:(EMMessage *)message error:(EMError *)error{
 }
 
 /*!
@@ -114,9 +99,7 @@ static EaseMobManager *_manager;
         {
             // 收到的文字消息
             NSString *txt = ((EMTextMessageBody *)msgBody).text;
-            
             alertBody = [NSString stringWithFormat:@"%@:%@",message.from,txt];
-            
         }
             break;
         case eMessageBodyType_Image:
@@ -130,9 +113,7 @@ static EaseMobManager *_manager;
             
         }
             break;
-            
     }
-
     
     //判断程序是否在后台执行
     if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
@@ -149,10 +130,8 @@ static EaseMobManager *_manager;
         //把通知添加到日程
         [[UIApplication sharedApplication] scheduleLocalNotification:noti];
         
-        
         //设置显示的数量
         [UIApplication sharedApplication].applicationIconBadgeNumber += 1;
-        
         
     }
     
@@ -190,52 +169,11 @@ static EaseMobManager *_manager;
  @param progress 值域为0到1.0的浮点数
  @param message  某一条消息的progress
  @param messageBody  某一条消息某个body的progress
- @result
  */
 - (void)setProgress:(float)progress
          forMessage:(EMMessage *)message
      forMessageBody:(id<IEMMessageBody>)messageBody{
     
-}
-
-#pragma mark - EaseMob Delegate
-/*!
- @method
- @brief 接收到好友请求时的通知
- @discussion
- @param username 发起好友请求的用户username
- @param message  收到好友请求时的say hello消息
- */
-- (void)didReceiveBuddyRequest:(NSString *)username message:(NSString *)message{
-    if (!message) {
-        message = @"";
-    }
-    //懒加载什么时候用什么时候初始化
-    [self.requests addObject:@{@"username":username,@"message":message}];//往字典中放nil会直接报错
-    //刷新
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"好友状态改变" object:nil];
-    
-}
-
-/*!
- @method
- @brief 好友请求被接受时的回调
- @discussion
- @param username 之前发出的好友请求被用户username接受了
- */
-- (void)didAcceptedByBuddy:(NSString *)username{
-    //需要让好友列表页面显示更新
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"好友状态改变" object:nil];
-}
-
-/*!
- @method
- @brief 好友请求被拒绝时的回调
- @discussion
- @param username 之前发出的好友请求被用户username拒绝了
- */
-- (void)didRejectedByBuddy:(NSString *)username{
-    NSLog(@"对方拒绝请求");
 }
 
 

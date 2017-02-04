@@ -27,6 +27,30 @@ static AVAudioPlayer *player;
 
 @implementation Utils
 
++(NSString *)parseTimeWithTimeStap:(float)timestap{
+    
+    timestap/=1000;
+    
+    NSDate *createDate = [NSDate dateWithTimeIntervalSince1970:timestap];
+    
+    //获取当前时间对象
+    NSDate *nowDate = [NSDate date];
+    
+    long nowTime = [nowDate timeIntervalSince1970];
+    long time = nowTime-timestap;
+    if (time<60) {
+        return @"刚刚";
+    }else if (time<3600){
+        return [NSString stringWithFormat:@"%ld分钟前",time/60];
+    }else if (time<3600*24){
+        return [NSString stringWithFormat:@"%ld小时前",time/3600];
+    }else{
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @"MM月dd日 HH:mm";
+        return [fmt stringFromDate:createDate];
+    }
+}
+
 //json格式字符串转换成字典
 + (NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString {
     NSData *JSONData = [JSONString dataUsingEncoding:NSUTF8StringEncoding];

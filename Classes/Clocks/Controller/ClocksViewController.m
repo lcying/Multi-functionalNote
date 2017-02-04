@@ -32,7 +32,7 @@
         FMResultSet *result = [database executeQuery:@"select * from Clocks"];
         while ([result next]) {
             NSString *content = [result stringForColumn:@"content"];
-            NSLog(@"content = %@",content);
+//            NSLog(@"content = %@",content);
             NSString *time = [result stringForColumn:@"time"];
             int repeat = [result intForColumn:@"repeat"];
             ClockModel *model = [[ClockModel alloc] init];

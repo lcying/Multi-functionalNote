@@ -13,6 +13,7 @@
 #import "TextNoteViewController.h"
 #import "RecordNoteViewController.h"
 #import "PaintingNoteViewController.h"
+#import "SendMessageViewController.h"
 
 @interface OtherPersonalHomeViewController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -42,6 +43,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.allNotesArray = [NSMutableArray array];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"私信" style:UIBarButtonItemStylePlain target:self action:@selector(sendMessageAction)];
     
     self.homeView = [[OtherPersonalHomeView alloc] init];
     [self.view addSubview:self.homeView];
@@ -208,6 +211,15 @@
             self.homeView.zanButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
         }
     }];
+}
+
+- (void)sendMessageAction{
+    //跳转到私信界面
+    SendMessageViewController *sendVc = [[SendMessageViewController alloc] init];
+    sendVc.hidesBottomBarWhenPushed = YES;
+    sendVc.toUser = self.currentUser;
+    [self.navigationController pushViewController:sendVc animated:YES];
+    
 }
 
 @end

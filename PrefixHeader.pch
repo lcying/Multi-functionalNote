@@ -16,13 +16,14 @@
 
 #define kRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
+#import <BmobSDK/Bmob.h>
+
 #import <Masonry/Masonry.h>
 #import "UIView+ORGetController.h"
 #import "UIImage+Extension.h"
 #import "Utils.h"
 #import <DKNightVersion.h>
 #import "XHDrawerController.h"
-#import <BmobSDK/BmobSDK.h>
 #import "FailedView.h"
 #import <MBProgressHUD.h>
 #import <UIImageView+WebCache.h>
@@ -42,9 +43,13 @@
 #import <FMDB.h>
 #import "NSObject+NSLocalNotification.h"
 
+
+
 #import <IChatManagerDelegate.h>
 #import <EaseMob.h>
 #import "EaseMobManager.h"
+
+#import <TZImagePickerController.h>
 
 
 #endif /* PrefixHeader_pch */

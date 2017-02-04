@@ -35,6 +35,10 @@
     [self drawView];
     [self.drawView showSettingBoard];
     
+//    if (self.noteModel) {
+//        [self.drawView.boardImage sd_setImageWithURL:[NSURL URLWithString:self.noteModel.imagePaths.firstObject] placeholderImage:[UIImage imageNamed:@"404"]];
+//    }
+    
     __block __weak WritePaintingViewController *weakself = self;
     
     [self.paintingView.headView setHeadCallBack:^(id obj) {
